@@ -1,0 +1,42 @@
+---
+import { ArrowUpRight, ArrowDownRight } from 'lucide-react';
+
+interface Props {
+  label: string;
+  value: string;
+  trend: string;
+  isPositive?: boolean;
+}
+
+const { label, value, trend, isPositive = true } = Astro.props;
+---
+
+<div class="glass-card p-6 flex flex-col justify-between hover:border-slate-700 transition-colors group">
+  <div>
+    <h3 class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-1">{label}</h3>
+    <p class="text-2xl font-bold text-white tracking-tight">{value}</p>
+  </div>
+  
+  <div class="flex items-center justify-between mt-4">
+    <div class:list={[
+      "flex items-center gap-1 text-xs font-bold px-2 py-1 rounded-lg",
+      isPositive ? "text-volt-green bg-volt-green/10" : "text-red-400 bg-red-400/10"
+    ]}>
+      {isPositive ? <ArrowUpRight size={14} /> : <ArrowDownRight size={14} />}
+      {trend}
+    </div>
+    
+    <div class="flex items-end gap-[2px] h-8">
+      {[40, 70, 45, 90, 65, 80, 50, 95].map((h, i) => (
+        <div 
+          class:list={[
+            "w-1 rounded-full transition-all duration-500 group-hover:opacity-100",
+            i === 7 ? "opacity-100" : "opacity-40",
+            isPositive ? "bg-volt-green" : "bg-red-400"
+          ]} 
+          style={`height: ${h}%`}
+        ></div>
+      ))}
+    </div>
+  </div>
+</div>
