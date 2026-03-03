@@ -10,5 +10,8 @@
     "recharts": "^3.7.0",
     "tailwindcss": "^4.2.1",
     "tremor": "^0.0.1"
+  },
+  "dependencies": {
+    "@astrojs/node": "^9.5.4"
   }
 }
